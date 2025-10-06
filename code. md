@@ -1,0 +1,45 @@
+<title>Login Page</title>
+Login
+Username:
+  <label for="login-password">Password:</label>
+  <input type="password" id="login-password" name="password" required />
+
+  <button type="submit">Login</button>
+</form>
+<a href="#" id="register-link">Register</a>
+Register
+Username:
+  <label for="register-password">Password:</label>
+  <input type="password" id="register-password" name="password" required />
+
+  <button type="submit">Register</button>
+</form>
+<a href="#" id="login-link">Login</a>
+<script src="script.js"></script>
+body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+
+div { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); width: 300px; text-align: center; }
+
+h2 { text-align: center; margin-bottom: 20px; }
+
+input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 4px; }
+
+button { width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+
+button:hover { background-color: #45a049; }
+
+a { display: block; margin-top: 15px; text-decoration: none; color: #007BFF; font-weight: bold; }
+
+a:hover { text-decoration: underline; }
+
+// Toggle between login and register forms document.getElementById("register-link").addEventListener("click", function(e) { e.preventDefault(); document.getElementById("login-form").style.display = "none"; document.getElementById("register-form").style.display = "block"; });
+
+document.getElementById("login-link").addEventListener("click", function(e) { e.preventDefault(); document.getElementById("register-form").style.display = "none"; document.getElementById("login-form").style.display = "block"; });
+
+// Simulate registration and login using localStorage document.getElementById("registerForm").addEventListener("submit", function(e) { e.preventDefault(); const username = document.getElementById("register-username").value; const password = document.getElementById("register-password").value;
+
+if (localStorage.getItem(username)) { alert("⚠️ Username already exists!"); } else { localStorage.setItem(username, password); alert("✅ Registration successful! You can now log in."); document.getElementById("register-form").style.display = "none"; document.getElementById("login-form").style.display = "block"; } });
+
+document.getElementById("loginForm").addEventListener("submit", function(e) { e.preventDefault(); const username = document.getElementById("login-username").value; const password = document.getElementById("login-password").value;
+
+const storedPassword = localStorage.getItem(username); if (storedPassword === password) { alert("✅ Login successful! Welcome " + username); } else { alert("❌ Invalid username or password."); } });
